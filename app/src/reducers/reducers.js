@@ -3,7 +3,9 @@
 import {
 	BEGIN_TRANSACTION,
 	RECEIVE_PAYMENT,
-	RECEIVE_ORDER_INFO
+	RECEIVE_ORDER_INFO,
+	SUBMIT_ORDER_ERROR,
+	SAVE_PAYMENT_ERROR
 } from '../actions/actions.js';
 
 function app(state = {
@@ -27,6 +29,18 @@ function app(state = {
 			return Object.assign({}, state, {
 				step: 'orderSaved',
 				order: action.order
+			});
+		case SUBMIT_ORDER_ERROR:
+			return Object.assign({}, state, {
+				step: 'form',
+				order: action.order,
+				error: action.error
+			});	
+		case SAVE_PAYMENT_ERROR:
+			return Object.assign({}, state, {
+				step: 'orderSaved',
+				order: action.order,
+				error: action.error
 			});
 		case RECEIVE_PAYMENT:
 			return Object.assign({}, state, {

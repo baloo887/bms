@@ -1,6 +1,7 @@
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var defaults = require('../config/config').defaults;
 mongoose.Promise = global.Promise;
 
 var orderSchema = new Schema({
@@ -8,6 +9,15 @@ var orderSchema = new Schema({
 	name: String,
 	surname: String,
 	address: String,
+	currency:{
+		type: String,
+		default: defaults.currency
+	},
+	total:{
+		type: Number,
+		default: defaults.total
+	}
+	,
 	payment: {
 		type: Object,
 		default: {}

@@ -47,7 +47,7 @@ class PayPalButton extends Component {
       return paypal.rest.payment.create('sandbox', client,
         {
           transactions: [
-            { amount: { total: '1.00', currency: 'USD' } },
+            { amount: { total: this.state.order.total, currency: this.state.order.currency } },
           ],
         },
       )
@@ -61,7 +61,7 @@ class PayPalButton extends Component {
     }
 
     const onCancel = (data) => {
-      console.log('The payment was cancelled!', data)
+      this.props.dispatch(this.props.onPaymentErr(this.state.order,data))
     }
 
     let button = null;

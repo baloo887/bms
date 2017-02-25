@@ -27,7 +27,7 @@ export class FlipContainer extends Component {
 				visible = < InputForm order={this.props.order} onClickFunc={this.props.submitOrder}/>;
 				break;
 			case 'orderSaved': 
-				visible = < PaymentForm order={this.props.order} onClickFunc={this.props.submitPayment}/>;
+				visible = < PaymentForm order={this.props.order} onClickFunc={this.props.submitPayment} onPaymentErr={this.props.submitPaymentError}/>;
 				break;
 			case 'paymentSaved': 
 				visible = < MessageContainer captionText='Great! And now wait at the door something is coming!' buttonText='restart' onClickFunc={this.props.start}/ >;

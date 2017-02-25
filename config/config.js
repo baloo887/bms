@@ -20,8 +20,14 @@ const paypal = {
 
 }
 
+const defaults = {
+  currency: 'EUR',
+  total: 9.90
+}
+
 module.exports = {
   expressConfig: expressConfig,
   dbConfig: dbConfig,
-  paypal:paypal
+  paypal:paypal,
+  defaults:defaults
 }

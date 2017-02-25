@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     submitPayment: (order, data) => {
       dispatch(submitPayment(order, data))
+    },
+    submitPaymentError: (order,error) => {
+      dispatch(submitPaymentError(order,error))
     }
   }
 }

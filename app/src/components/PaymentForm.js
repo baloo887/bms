@@ -16,7 +16,7 @@ export class PaymentForm extends Component{
 			<div>
 				Payment Method
 			
-				<PayPalButton id='button' order={this.props.order} onClickFunc={this.props.onClickFunc}/>
+				<PayPalButton id='button' order={this.props.order} onClickFunc={this.props.onClickFunc} onPaymentErr={this.props.onPaymentErr}/>
 			</div>
 		);	
 	}	
