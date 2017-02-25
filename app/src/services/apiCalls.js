@@ -2,7 +2,10 @@
 
 import fetch from 'isomorphic-fetch';
 
-const baseUrl = 'http://localhost:3001';
+
+import config from '../../../config/config';
+
+const baseUrl = config.expressConfig.apiServer + '80' + config.expressConfig.apiPort;
 
 export const saveOrderInfoAPI = (data) => {
 	return fetch(baseUrl + '/api/order', {

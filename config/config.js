@@ -1,8 +1,8 @@
 'use strict';
 
 const expressConfig = {
-  apiPort: 3001,
-  apiServer: 'localhost',
+  apiPort: 80,
+  apiServer: 'http://ec2-34-250-193-115.eu-west-1.compute.amazonaws.com/',
   port: 3001,
   server: 'localhost',
   ip: '127.0.0.1',
