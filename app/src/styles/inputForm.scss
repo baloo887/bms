@@ -1,0 +1,7 @@
+$input-form-text-width: 200px;
+
+.input-form{
+	width: $input-form-text-width;
+	margin-top: 10px;
+	margin-left: calc(50% - calc(#{$carousel-text-width}/2));
+}

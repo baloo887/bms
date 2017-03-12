@@ -7,6 +7,9 @@ import {
 	MessageContainer
 } from './MessageContainer';
 import {
+	CarouselText
+} from './CarouselText';
+import {
 	InputForm
 } from './InputForm';
 import {PaymentForm} from './PaymentForm';
@@ -17,14 +20,9 @@ export class FlipContainer extends Component {
 
 		let visible = null;
 
-		console.log(this.props);
-
 		switch (this.props.step){
-			case 'begin': 
-				visible = < MessageContainer captionText='buy me something' buttonText='ok' onClickFunc={this.props.start}/>;
-				break;
 			case 'form': 
-				visible = < InputForm order={this.props.order} onClickFunc={this.props.submitOrder}/>;
+				visible = < InputForm order={this.props.order} onClickFunc={this.props.submitOrder} captionText='Buy me something'/>;
 				break;
 			case 'orderSaved': 
 				visible = < PaymentForm order={this.props.order} onClickFunc={this.props.submitPayment} onPaymentErr={this.props.submitPaymentError}/>;
@@ -34,12 +32,14 @@ export class FlipContainer extends Component {
 				break;		
 		}
 
-		console.log(visible);
-
 		return(
-			 < div >
-				{visible}
-			< /div>
+			 <div className='button-container'> 
+			 	<div className='headerText'><b>BUY ME SOMETHING</b></div>
+			 	<CarouselText textList={this.props.textList} />
+			 	<div>
+					{visible}
+				</div>	
+			</div>
 		);	
 	}
 }

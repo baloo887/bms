@@ -10,21 +10,17 @@ import {
 
 function app(state = {
 	page: 'form',
-	step: 'begin',
-	order: {}
+	step: 'form',
+	textList: ['cool','nice','blue','nerdy','geeky','juicy', 'carlo'],
+	order: {
+		email: '',
+		name: '',
+		surname: '',
+		address: '',
+		payment: {}
+	}
 }, action) {
 	switch (action.type) {
-		case BEGIN_TRANSACTION:
-			return Object.assign({}, state, {
-				step: 'form',
-				order: {
-					email: '',
-					name: '',
-					surname: '',
-					address: '',
-					payment: {}
-				}
-			});
 		case RECEIVE_ORDER_INFO:
 			return Object.assign({}, state, {
 				step: 'orderSaved',

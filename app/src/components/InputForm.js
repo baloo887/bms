@@ -1,6 +1,9 @@
 'use strict';
 
 import React, { Component } from 'react';
+import {
+	MessageContainer
+} from './MessageContainer';
 
 export class InputForm extends Component{
 
@@ -28,7 +31,7 @@ export class InputForm extends Component{
 
 	render() {
 		return (
-			<div>
+			<div className='input-form'>
 				name<br/>
 				<input type='text' name='name' value={this.state.name} onChange={this.handleInputChange}/><br/>
 				surname<br/>

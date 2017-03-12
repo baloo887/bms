@@ -1,0 +1,15 @@
+$carousel-text-width: 200px;
+$carousel-text-height: 50px;
+$carousel-text-background-color: cyan;
+$carousel-text-color: black;
+
+.carousel-text-container{
+	width:$carousel-text-width;
+	height: $carousel-text-height;
+	margin-top: 10px;
+	margin-left: calc(50% - calc(#{$carousel-text-width}/2));
+	background-color: $carousel-text-background-color;
+	color: $carousel-text-color;
+	text-align: center;
+    font-size: 38px;
+}

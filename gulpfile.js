@@ -24,10 +24,7 @@ var babelify = require('babelify');
 gulp.task('styles', function() {
   var sassFilter = filter('**/*.scss', { restore: true })
   return gulp.src([
-      'bower_components/ng-notify/dist/ng-notify.min.css',
-      'bower_components/angular-tooltips/dist/angular-tooltips.min.css',
-      'bower_components/angularjs-datepicker/dist/angular-datepicker.min.css',
-      './index.scss'
+      './app/index.scss'
     ])
     .pipe(sassFilter)
     .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
@@ -71,12 +68,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('watchify', function() {
-    var bundler = browserify({
-        entries: ['./app/src/index.js'], // Only need initial file, browserify finds the deps
-        transform: [reactify], // We want to convert JSX to normal javascript
-        debug: true, // Gives us sourcemapping
-        cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
-    });
+    var bundler = browserify('./app/src/index.js', { debug: true });
     var watcher  = watchify(bundler);
 
     return watcher
@@ -84,14 +76,13 @@ gulp.task('watchify', function() {
         var updateStart = Date.now();
         console.log('Updating!');
         watcher.bundle() // Create new bundle that uses the cache for high performance
-        .pipe(source('index.js'))
-    // This is where you add uglifying etc.
-        .pipe(gulp.dest('./build/'));
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('./dist/scripts'));
         console.log('Updated!', (Date.now() - updateStart) + 'ms');
     })
     .bundle() // Create the initial bundle when starting the task
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./dist/scripts'));
 });
 
 gulp.task('browserify', function() {
@@ -104,14 +95,7 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('./dist/scripts'));
 });
 
-// I added this so that you see how to run two watch tasks
-gulp.task('css', function () {
-    gulp.watch('styles/**/*.css', function () {
-        return gulp.src('styles/**/*.css')
-        .pipe(concat('main.css'))
-        .pipe(gulp.dest('./dist/'));
-    });
-});
-
 // Just running the two tasks
-gulp.task('default', ['clean','browserify','html']);
+gulp.task('build', ['clean','browserify','styles','html']);
+
+gulp.task('watch', ['clean','watchify','html']);

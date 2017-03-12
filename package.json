@@ -29,6 +29,8 @@
     "gulp-sourcemaps": "^2.4.0",
     "gulp-uglify": "^2.0.1",
     "react-redux": "^5.0.2",
+    "react-text-carousel": "0.1.1",
+    "react-typist": "1.0.3",
     "reactify": "^1.1.1",
     "redux": "^3.6.0",
     "run-sequence": "^1.2.2",

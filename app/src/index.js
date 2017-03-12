@@ -25,17 +25,6 @@ const store = createStore(
 	)
 )
 
-//store.dispatch(beginTransaction());
-/*store.dispatch(submitNewOrder({
-	email: 'lucadonadi.tv@gmail.com',
-	name: 'luca',
-	surname: 'donadi',
-	address: 'bla bla bla',
-	payment: {}
-})).then(() =>
-	console.log(store.getState())
-)*/
-
 ReactDOM.render( <Provider store={store}>
     <App />
   </Provider> ,
